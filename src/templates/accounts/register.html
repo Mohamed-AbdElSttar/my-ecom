@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register - My-Ecom{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Create Your Account</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    
+                    <!-- Display form errors if any -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            Please correct the errors below.
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Render form with crispy -->
+                    {{ form|crispy }}
+                    
+                    <!-- Password Requirements -->
+                    <div class="alert alert-info mt-3">
+                        <h6>Password Requirements:</h6>
+                        <ul class="mb-0">
+                            <li>At least 8 characters</li>
+                            <li>Cannot be too similar to your other personal information</li>
+                            <li>Cannot be a commonly used password</li>
+                            <li>Cannot be entirely numeric</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+                
+                <hr>
+                
+                <!-- Login Link -->
+                <div class="text-center">
+                    <p>Already have an account? 
+                        <a href="#">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
