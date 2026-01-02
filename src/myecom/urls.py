@@ -18,13 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('', TemplateView.as_view(template_name='base.html'), name='home'),
-    # We'll add other app URLs as we build them
+    path('', include('products.urls')),  # We'll create this later
 ]
 
 # Serve media files in development

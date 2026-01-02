@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from .views import CustomLoginView, register
 
 urlpatterns = [
-    path('register/', views.register, name='register'),
+    path('register/', register, name='register'),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    # path('password-reset/', password_reset_request, name='password_reset'),
 ]
